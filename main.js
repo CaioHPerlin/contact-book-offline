@@ -1,15 +1,18 @@
-const { app, BrowserWindow } = require('electron');
-const { connectToDatabase, closeDatabaseConnection } = require('./db');
+const { app, dialog, BrowserWindow, ipcMain } = require('electron');
+const database = require('./db');
+const User = require('./models/user');
+
+let db;
 
 const createWindow = () => {
 	let win = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 1200,
+		height: 800,
 		webPreferences: {
 			nodeIntegration: true,
+			contextIsolation: false,
 		},
 	});
-
 	win.removeMenu();
 
 	win.loadFile('views/login/index.html');
@@ -18,9 +21,17 @@ const createWindow = () => {
 };
 
 app.on('ready', () => {
-	createWindow();
+	db = database.connect();
+	database.setup(db);
 
-	db = connectToDatabase();
+	createWindow();
 });
 
-app.on('before-quit', closeDatabaseConnection);
+app.on('before-quit', () => database.close(db));
+
+ipcMain.on(
+	'auth-request',
+	async (event, user) => await User.authenticate(event, user)
+);
+
+process.on('uncaughtException', (err) => dialog.showErrorBox(err.message, ''));
