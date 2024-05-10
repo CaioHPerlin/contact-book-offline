@@ -6,17 +6,17 @@
 		<title>Acesso Agenda</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="default-src 'self'; script-src 'self'; style-src 'self';"
 		/>
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 		<link
 			rel="shortcut icon"
 			href="../images/agenda.png"
 			type="image/x-icon"
 		/>
-		<script defer type="module" src="script.js"></script>
+		<script defer src="script.js"></script>
 	</head>
 	<body>
 		<div class="bg-img">
@@ -28,7 +28,7 @@
 						<input
 							type="text"
 							required
-							name="username"
+							name="name"
 							placeholder="Login"
 						/>
 					</div>

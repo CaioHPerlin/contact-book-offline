@@ -1,20 +1,16 @@
-const { ipcRenderer, dialog } = require('electron');
+const form = document.querySelector('#form-login');
 
-const authForm = document.getElementById('form-login');
-authForm.addEventListener('submit', (ev) => {
+form.addEventListener('submit', (ev) => {
 	ev.preventDefault();
+
 	const user = {
-		username: authForm.username.value,
-		password: authForm.password.value,
+		name: form.name.value,
+		password: form.password.value,
 	};
 
-	ipcRenderer.send('auth-request', user);
-});
+	api.send('auth-req', user);
 
-ipcRenderer.on('auth-response', (event, { success, message }) => {
-	if (!success) {
-		dialog.showErrorBox('Ocorreu um erro', message);
-	}
-
-	window.location.href = '../dashboardAdm/index.html';
+	api.on('auth-res', (_, { success }) => {
+		success ? (window.location.href = '../dashboardAdm/index.html') : '';
+	});
 });

@@ -1,32 +1,28 @@
-const database = require('../db');
+const db = require('../db');
 
 class User {
-	static async authenticate(event, { username, password }) {
-		const db = database.connect();
+	static async authenticate(event, { name, password }) {
+		const dbInstance = db.connect();
 		try {
 			const query = `SELECT name, password FROM user WHERE name = ?`;
-
-			db.get(query, [username], (err, row) => {
-				if (err)
-					throw new Error('Erro no banco de dados:', err.message);
-
-				if (!row || row.password !== password) {
-					throw new Error('Usuário ou senha inválidos.');
+			dbInstance.get(query, [name], (err, row) => {
+				if (err) {
+					console.error('Error during database query:', err);
+					throw new Error(
+						'Erro durante busca no banco de dados, por favor, reinicie a aplicação'
+					);
 				}
-
-				event.sender.send('auth-response', {
-					success: true,
-					message: 'Authentication succesfull',
-					user: row,
-				});
+				if (!row || row.password != password) {
+					console.error('User does not exist');
+					throw new Error('Login ou senha inválidos');
+				}
+				event.sender.send('auth-res', { success: true });
 			});
 		} catch (err) {
-			event.sender.send('auth-response', {
-				success: false,
-				message: err.message,
-			});
+			console.error('Error during authentication:', err);
+			event.sender.send('auth-res', { success: false });
 		} finally {
-			database.close(db);
+			db.close(dbInstance);
 		}
 	}
 }

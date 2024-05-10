@@ -3,18 +3,14 @@ require('dotenv').config();
 const sqlite = require('sqlite3').verbose();
 
 const connect = () => {
-	const db = new sqlite.Database('database.db');
-
+	const db = new sqlite.Database('sqlite.db');
 	return db;
 };
 
 const close = (db) => {
 	db.close((err) => {
 		if (err) {
-			return console.error(
-				'Error when closing database connection:',
-				err.message
-			);
+			return console.error('Error when closing database:', err.message);
 		}
 		console.log('Database connection closed');
 	});
