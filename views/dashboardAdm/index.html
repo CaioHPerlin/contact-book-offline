@@ -10,6 +10,7 @@
     <title>Dashboard Inicial</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  >
     <script src="main.js"></script>
   </head>
   <body>
@@ -17,32 +18,50 @@
 
     <main class="mainCenter">
 
-        <section>
+        <section class="container">
       <h1>CONTROLE</h1>
 
-      <section class="btnCenter">
-        <div>
-         <a href="../registerContato/index.html"> <button class="btnContato">Cadastro de Contatos</button></a>
+      <section class="row g-3 btnCenter">
+        <div class="col-md-6">
+            <a href="../registerContato/index.html">
+                <button class="btnContato">Cadastro de Contatos</button>
+            </a>
         </div>
-        <div>
-          <a href="../registerOrgao/index.html"><button class="btnDashboard">Cadastro de Órgãos</button></a>
+        <div class="col-md-6">
+            <a href="../registerOrgao/index.html">
+                <button class="btnDashboard">Cadastro de Órgãos</button>
+            </a>
         </div>
-      </section>
-      <div>
-        <a href="../contatoCadastrado/index.html"><button class="btnContato">Contatos Cadastrados</button></a>
-      </div>
-      <div>
-        <a href="../orgaoCadastrado/index.html"><button class="btnDashboard">Órgãos Cadastrados</button></a>
-      </div>
-      <div>
-        <a href="../registerAdm/index.html"><button class="btnAdm">Cadastro de Administrador</button></a>
-      </div>
-      <div>
-        <button class="btnEmail">Email em Lote</button>
-      </div>
-        </section>
+    </section>
+    
+    <section class="row g-3 btnCenter">
+        <div class="col-md-6">
+            <a href="../contatoCadastrado/index.html">
+                <button class="btnContato">Contatos Cadastrados</button>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="../orgaoCadastrado/index.html">
+                <button class="btnDashboard">Órgãos Cadastrados</button>
+            </a>
+        </div>
+    </section>
+    
+    <section class="row g-3 btnCenter">
+        <div class="col-md-6">
+            <a href="../registerAdm/index.html">
+                <button class="btnAdm">Cadastro de Administrador</button>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <button class="btnEmail">Email em Lote</button>
+        </div>
+    </section>
+    </section>
       
 
     </main>
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js" ></script>
   </body>
 </html>

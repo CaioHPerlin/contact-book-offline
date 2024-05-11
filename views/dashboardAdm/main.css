@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  body{
+    height: 100vh;
+  }
   
   header {
     background-color: #cfcfcf;
@@ -36,7 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 89vh;
+    
     text-align: center;
   }
   
