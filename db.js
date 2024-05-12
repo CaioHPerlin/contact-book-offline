@@ -12,7 +12,6 @@ const close = (db) => {
 		if (err) {
 			return console.error('Error when closing database:', err.message);
 		}
-		console.log('Database connection closed');
 	});
 };
 
@@ -23,16 +22,16 @@ const setup = (db) => {
 			db.run(
 				`CREATE TABLE IF NOT EXISTS user (
 					id INTEGER PRIMARY KEY AUTOINCREMENT,
-					name TEXT NOT NULL,
+					name TEXT NOT NULL UNIQUE,
 					password TEXT NOT NULL
 				)`
 			);
 
-			const stmt = db.prepare(
-				`INSERT OR IGNORE INTO user (id, name, password) VALUES (1, ?, ?)`
-			);
-			stmt.run(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD);
-			stmt.finalize();
+			const query = `INSERT OR IGNORE INTO user (id, name, password) VALUES (1, ?, ?)`;
+			db.run(query, [
+				process.env.ADMIN_USERNAME,
+				process.env.ADMIN_PASSWORD,
+			]);
 
 			//Setup Organization
 			db.run(

@@ -4,12 +4,17 @@ const db = require('./db');
 
 const User = require('./models/user');
 
-//API
-ipcMain.on('auth-req', User.authenticate);
-
-//App
 let mainWindow, dbInstance;
 
+//API
+ipcMain.on('auth-req', User.authenticate);
+ipcMain.on('user-create-req', User.create);
+
+ipcMain.on('message', (_, options) =>
+	dialog.showMessageBoxSync(mainWindow, { ...options, buttons: ['OK'] })
+);
+
+//App
 app.on('ready', () => {
 	createWindow();
 
@@ -30,7 +35,7 @@ app.on('before-quit', () => db.close(dbInstance));
 process.on('uncaughtException', (err) => {
 	const messageBoxOptions = {
 		type: 'error',
-		title: '',
+		title: 'Erro',
 		message: err.message,
 	};
 	dialog.showMessageBoxSync(messageBoxOptions);
@@ -46,6 +51,7 @@ const createWindow = () => {
 		},
 	});
 
+	mainWindow.webContents.openDevTools();
 	mainWindow.removeMenu();
 	mainWindow.loadFile(path.join(__dirname, 'views/login/index.html'));
 };
