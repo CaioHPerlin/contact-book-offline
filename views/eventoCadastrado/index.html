@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Eventos</title>
+  <title>Eventos Cadastrados</title>
   <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  >
+  <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="main.css">
 </head>
 <body class="container-fluid">
@@ -24,51 +25,42 @@
 
         <nav class="topo">
           <section class="topo-title">
-            <h1>Cadastro de Eventos</h1>
+            <h1>Eventos Cadastrados</h1>
           </section>
-      
+          <section>        
+            <div class="input-group mt-3 pesquisar">
+            <input type="text" class="form-control" placeholder="Nome do Evento" aria-label="Pesquisar Nome do Evento" aria-describedby="botao-pesquisar">
+            <button class="btn btn-primary" type="button" id="botao-pesquisar">
+                        <i class="bi bi-search"></i> 
+            </button>
+             </div>
+          </section>
         </nav>
 
-        <section class="content">
-            <form class="row g-3" method="post">
-                <div class="col-md-6">
-                    <label for="inputNome4" class="form-label">Nome:</label>
-                    <input type="text" class="form-control" id="inputNome4" placeholder="Digite o Nome" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="orgaoParticipante" class="form-label">Órgão Participante</label>
-                    <select class="form-select" aria-label="Selecione o Órgão participante" id="orgaoParticipante" required>
-                        <option selected>Escolha o órgão</option>
-                        <option value="Nenhum">Nenhum</option>
-                    </select>
-                </div>
-                
-                <!-- Botão para adicionar mais órgãos -->
-                <div class="col-12">
-                    <button type="button" class="btnAdicionar" onclick="adicionarOrgao()">Adicionar Outro Órgão</button>
-                </div>
-            
-                <!-- Container onde os órgãos adicionais serão inseridos -->
-                <div class="col-6">
-                    <label for="inputAddress" class="form-label">Adicionar Contato</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Digite o nome completo do contato de forma correta " required>
-                   
-                </div>
-                <div class="col-12">
-                    <button class="btnAdicionar" type="button" onclick="adicionarContato()">Adicionar Contato</button>
+       
+        <main class="container mt-4">
 
-                </div>
-
-
-
-
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Cadastrar Evento</button>
-                </div>
-              </form>
-      
-
-          </section>
+            <h2>Eventos Cadastrados</h2>
+    
+            <ul class="list-group mt-3 lista">
+               
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Evento 1
+                    <div>
+                        <button class="btn btn-primary me-2" onclick="alert('Participantes Cadastrados')">Participantes Cadastrados</button>
+                        <button class="btn btn-danger" onclick="confirmarExclusao()">Excluir Evento</button>
+                    </div>
+                </li>
+               
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Evento 2
+                    <div>
+                        <button class="btn btn-primary me-2" onclick="alert('Participantes Cadastrados')">Participantes Cadastrados</button>
+                        <button class="btn btn-danger" onclick="confirmarExclusao()">Excluir Evento</button>
+                    </div>
+                </li>
+ 
+            </ul>
         </main>
 
     
