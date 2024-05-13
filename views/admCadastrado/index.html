@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administradores Cadastrados</title>
+  <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  >
+  <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body class="container-fluid">
+
+<div class="row">
+    <header class="col-md-3 col-lg-2 ">
+        <h2>Menu</h2>
+        <ul class="list">
+          <a href="../registerContato/index.html"> <li><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></g><path fill="black" d="M15 4a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4m0 1.9a2.1 2.1 0 1 1 0 4.2A2.1 2.1 0 0 1 12.9 8A2.1 2.1 0 0 1 15 5.9M4 7v3H1v2h3v3h2v-3h3v-2H6V7zm11 6c-2.67 0-8 1.33-8 4v3h16v-3c0-2.67-5.33-4-8-4m0 1.9c2.97 0 6.1 1.46 6.1 2.1v1.1H8.9V17c0-.64 3.1-2.1 6.1-2.1"/></svg></i> cadastrar contato</li></a>
+          <a href="../registerOrgao/index.html"><li><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="black" d="M15 4a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4m0 1.9a2.1 2.1 0 1 1 0 4.2A2.1 2.1 0 0 1 12.9 8A2.1 2.1 0 0 1 15 5.9M4 7v3H1v2h3v3h2v-3h3v-2H6V7zm11 6c-2.67 0-8 1.33-8 4v3h16v-3c0-2.67-5.33-4-8-4m0 1.9c2.97 0 6.1 1.46 6.1 2.1v1.1H8.9V17c0-.64 3.1-2.1 6.1-2.1"/></svg></i>cadastrar órgão</li></a>
+          <a href="../contatoCadastrado/index.html"><li><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"><path d="M20.5 20.5L22 22m-7-4a3 3 0 1 0 6 0a3 3 0 0 0-6 0"/><path d="M20 12V5.749a.6.6 0 0 0-.176-.425l-3.148-3.148A.6.6 0 0 0 16.252 2H4.6a.6.6 0 0 0-.6.6v18.8a.6.6 0 0 0 .6.6H11"/><path d="M16 2v3.4a.6.6 0 0 0 .6.6H20"/></g></svg></i>contato cadastrados</li></a>
+          <a href="../orgaoCadastrado/index.html"><li><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"><path d="M20.5 20.5L22 22m-7-4a3 3 0 1 0 6 0a3 3 0 0 0-6 0"/><path d="M20 12V5.749a.6.6 0 0 0-.176-.425l-3.148-3.148A.6.6 0 0 0 16.252 2H4.6a.6.6 0 0 0-.6.6v18.8a.6.6 0 0 0 .6.6H11"/><path d="M16 2v3.4a.6.6 0 0 0 .6.6H20"/></g></svg></i>órgãos cadastrados</li></a>
+         <a href="../orgaoCadastrado/index.html"><li><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M44 24V9H4v30h20m20-5H30m9-5l5 5l-5 5"/><path d="m4 9l20 15L44 9"/></g></svg></i>email em lote</li></a>
+        </ul>
+    </header>
+    <main class="col-md-9 col-lg-10">
+
+        <nav class="topo">
+          <section class="topo-title">
+            <h1>Administradores Cadastrados</h1>
+          </section>
+          <section>        
+            <div class="input-group mt-3 pesquisar">
+            <input type="text" class="form-control" placeholder="Nome do Adminiistrador" aria-label="Pesquisar Nome do Administrador" aria-describedby="botao-pesquisar">
+            <button class="btn btn-primary" type="button" id="botao-pesquisar">
+                        <i class="bi bi-search"></i> 
+            </button>
+             </div>
+          </section>
+        </nav>
+
+       
+        <main class="container mt-4">
+
+            <h2>Administradores Cadastrados</h2>
+    
+            <ul class="list-group mt-3 lista">
+               
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Administrador 1
+                    <div>
+                       <button class="btn btn-danger" onclick="confirmarExclusao()">Excluir Administrador</button>
+                    </div>
+                </li>
+               
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Administrador 2
+                    <div>
+                       <button class="btn btn-danger" onclick="confirmarExclusao()">Excluir Administrador</button>
+                    </div>
+                </li>
+ 
+            </ul>
+        </main>
+
+    
+    
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js" ></script>
+<script src="main.js"></script>
+</body>
+</html>
+
