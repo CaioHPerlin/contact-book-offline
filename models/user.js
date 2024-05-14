@@ -49,6 +49,67 @@ class User {
 			await db.close(dbInstance);
 		}
 	}
+
+	static async getAll(event, name) {
+		const dbInstance = db.connect();
+		try {
+			if (!name) {
+				const query = `SELECT * FROM user`;
+				await dbInstance.all(query, [], (err, rows) => {
+					if (err) {
+						console.error(err);
+						throw new Error(
+							'Erro ao buscar no banco da dados. Por favor, tente novamente.'
+						);
+					}
+					event.sender.send('user-getall-res', {
+						success: true,
+						data: rows,
+					});
+				});
+			} else {
+				const query = `SELECT * FROM user WHERE name LIKE ?`;
+				await dbInstance.all(query, [`%${name}%`], (err, rows) => {
+					if (err) {
+						console.error(err);
+						throw new Error(
+							'Erro ao buscar no banco da dados. Por favor, tente novamente.'
+						);
+					}
+					event.sender.send('user-getall-res', {
+						success: true,
+						data: rows,
+					});
+				});
+			}
+		} catch (err) {
+			console.error('Error when getting all users:', err);
+			event.sender.send('user-getall-res', { success: false });
+		} finally {
+			await db.close(dbInstance);
+		}
+	}
+
+	static async delete(event, id) {
+		const dbInstance = db.connect();
+		try {
+			const query = `DELETE FROM user WHERE id = ?`;
+			await dbInstance.run(query, [id], (err) => {
+				if (err) {
+					console.error('Error when deleting user:', err);
+					throw new Error(
+						'Erro ao remover usuário do banco de dados, por favor, tente pesquisar por usuários novamente'
+					);
+				}
+				event.sender.send('user-delete-res', { success: true });
+			});
+		} catch (err) {
+			console.error('Error when deleting user:', err);
+			event.sender.send('user-delete-res', { success: false });
+		} finally {
+			await db.close(dbInstance);
+		}
+	}
 }
 
 module.exports = User;
