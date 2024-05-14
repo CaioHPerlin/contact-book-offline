@@ -79,7 +79,7 @@
   }
   
   .btnDashboard:hover {
-    background-color: #b3b3b3;
+    background-color: #c7e4f8;
   }
   
   .btnContato {
@@ -87,15 +87,15 @@
   }
   
   .btnContato:hover {
-    background-color: #b3b3b3;
+    background-color: #f7fbc6;
   }
   
   .btnAdm {
-    background-color: #95fab9;
+    background-color: #9fd0af;
   }
   
   .btnAdm:hover {
-    background-color: #b3b3b3;
+    background-color:#bee6cb;
   }
   
   .btnEmail {
@@ -103,7 +103,7 @@
   }
   
   .btnEmail:hover {
-    background-color: #b3b3b3;
+    background-color: #fc7765;
   }
 
 
