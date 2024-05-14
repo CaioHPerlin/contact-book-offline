@@ -39,6 +39,26 @@ header h2{
  
  }
 
+ .search-box {
+    position: relative; /* Posicionamento relativo para o 'input' */
+    width: 300px;
+  }
+  
+  .search-box input[type="text"] {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Espaçamento interno para não sobrepor o ícone */
+    box-sizing: border-box;
+  }
+  
+  .search-box svg {
+    position: absolute; /* Posicionamento absoluto relativo ao pai 'search-box' */
+    top: 25px; /* Posicionado verticalmente no centro */
+    right: 10px; /* Alinhado à direita dentro do 'input' */
+    cursor: pointer; /* Cursor como ponteiro para indicar clicabilidade */
+    width: 20px;
+    height: 20px;
+  }
+
 .topo{
     padding: 50px;
     display: flex;
@@ -56,6 +76,14 @@ header h2{
 
 
 .filterSelect select{
+    margin: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+
+
+}
+
+.filterSelect select ,  input{
     margin: 10px;
     padding: 8px;
     border: 1px solid #ccc;
