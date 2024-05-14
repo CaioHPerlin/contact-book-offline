@@ -70,4 +70,7 @@ header a {
     border-bottom: 1px solid #ccc;
 }
 
-
+header{
+    height: 100vh;
+    overflow-y: scroll;
+ }

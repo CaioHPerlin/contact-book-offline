@@ -71,3 +71,8 @@ header a {
     justify-content: right;
     padding: 10px 20px;
 }
+
+header{
+    height: 100vh;
+    overflow-y: scroll;
+ }
