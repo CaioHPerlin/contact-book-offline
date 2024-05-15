@@ -9,8 +9,12 @@ form.addEventListener('submit', (ev) => {
 	};
 
 	api.send('auth-req', user);
+});
 
-	api.on('auth-res', (_, { success }) => {
-		success ? (window.location.href = '../dashboardAdm/index.html') : '';
-	});
+api.on('auth-res', (_, { success, message }) => {
+	if (!success) {
+		return api.error(message);
+	}
+
+	window.location.href = '../dashboardAdm/index.html';
 });

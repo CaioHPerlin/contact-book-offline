@@ -20,22 +20,22 @@ ipcMain.on('message', (_, options) =>
 );
 
 //App
-app.on('ready', () => {
+app.on('ready', async () => {
 	createWindow();
 
 	app.on('activate', () => {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
 	});
 
-	dbInstance = db.connect();
-	db.setup(dbInstance);
+	dbInstance = await db.connect();
+	await db.setup(dbInstance);
 });
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') app.quit();
 });
 
-app.on('before-quit', () => db.close(dbInstance));
+app.on('before-quit', async () => await db.close(dbInstance));
 
 process.on('uncaughtException', (err) => {
 	const messageBoxOptions = {
@@ -49,8 +49,8 @@ process.on('uncaughtException', (err) => {
 //Window
 const setWindowProd = () => {
 	mainWindow = new BrowserWindow({
-		width: 1200,
-		height: 675,
+		width: 1120,
+		height: 630,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 		},
@@ -66,10 +66,10 @@ const setWindowDev = () => {
 
 	if (externalDisplay) {
 		mainWindow = new BrowserWindow({
-			x: externalDisplay.bounds.x + 50,
-			y: externalDisplay.bounds.y + 50,
-			width: 1200,
-			height: 675,
+			x: externalDisplay.bounds.x + 150,
+			y: externalDisplay.bounds.y + 100,
+			width: 1120,
+			height: 630,
 			webPreferences: {
 				preload: path.join(__dirname, 'preload.js'),
 			},

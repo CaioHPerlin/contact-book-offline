@@ -1,75 +1,76 @@
 require('dotenv').config();
 
-const sqlite = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose();
+const { open } = require('sqlite');
 
-const connect = () => {
-	const db = new sqlite.Database('sqlite.db');
-	return db;
-};
-
-const close = (db) => {
-	db.close((err) => {
-		if (err) {
-			return console.error('Error when closing database:', err.message);
-		}
+const connect = async () => {
+	return open({
+		filename: 'sqlite.db',
+		driver: sqlite3.Database,
 	});
 };
 
-const setup = (db) => {
+const close = async (db) => {
 	try {
-		db.serialize(() => {
-			// Setup User
-			db.run(
-				`CREATE TABLE IF NOT EXISTS user (
+		await db.close();
+	} catch (err) {
+		console.error('Error when closing database:', err.message);
+	}
+};
+
+const setup = async (db) => {
+	try {
+		// Setup User
+		await db.exec(
+			`CREATE TABLE IF NOT EXISTS user (
 					id INTEGER PRIMARY KEY AUTOINCREMENT,
 					name TEXT NOT NULL UNIQUE,
 					password TEXT NOT NULL
 				)`
-			);
+		);
 
-			const query = `INSERT OR IGNORE INTO user (id, name, password) VALUES (1, ?, ?)`;
-			db.run(query, [
-				process.env.ADMIN_USERNAME,
-				process.env.ADMIN_PASSWORD,
-			]);
+		const query = `INSERT OR IGNORE INTO user (id, name, password) VALUES (1, ?, ?)`;
+		await db.run(query, [
+			process.env.ADMIN_USERNAME,
+			process.env.ADMIN_PASSWORD,
+		]);
 
-			//Setup Organization
-			db.run(
-				`CREATE TABLE IF NOT EXISTS organization (
+		//Setup Organization
+		await db.exec(
+			`CREATE TABLE IF NOT EXISTS organization (
 					id INTEGER PRIMARY KEY AUTOINCREMENT,
 					name TEXT NOT NULL
 				)`
-			);
+		);
 
-			//Setup Contact
-			db.run(
-				`CREATE TABLE IF NOT EXISTS contact (
+		//Setup Contact
+		await db.exec(
+			`CREATE TABLE IF NOT EXISTS contact (
 					id INTEGER PRIMARY KEY AUTOINCREMENT,
-					name TEXT NOT NULL,Z
+					name TEXT NOT NULL,
 					role TEXT NOT NULL,
 					phone TEXT NOT NULL,
 					email TEXT NOT NULL,
 					organizationId INTEGER REFERENCES organization(id)
 				)`
-			);
+		);
 
-			//Setup Event
-			db.run(
-				`CREATE TABLE IF NOT EXISTS event (
+		//Setup Event
+		await db.exec(
+			`CREATE TABLE IF NOT EXISTS event (
 					id INTEGER PRIMARY KEY AUTOINCREMENT,
 					name TEXT NOT NULL,
 					date DATE NOT NULL
 				)`
-			);
+		);
 
-			//Setup Event Contact (many-to-many)
-			db.run(
-				`CREATE TABLE IF NOT EXISTS eventContact (
+		//Setup Event Contact (many-to-many)
+		await db.exec(
+			`CREATE TABLE IF NOT EXISTS eventContact (
 					eventId INTEGER NOT NULL REFERENCES event(id),
 					contactId INTEGER NOT NULL REFERENCES contact(id)
 				)`
-			);
-		});
+		);
 	} catch (err) {
 		console.error('Error setting up database:', err);
 	}
