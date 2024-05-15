@@ -6,7 +6,7 @@ body {
 }
 
 header{
-   min-height: 100vh;
+    height: 100vh;
     box-shadow: 1px 1px 3px;
     background-color:  #a0d2f3;
 }
@@ -65,13 +65,36 @@ header a {
     padding: 10px;
 }
 
-.hidden {
-    display: none;
-  }
+
+
   header{
-    height: 100vh;
+    height: 100%;
     overflow-y: scroll;
  }
 
+ .hamburger {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+}
 
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .list {
+        display: none;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .list.hidden {
+        display: none;
+    }
 
+    .list.show {
+        display: block;
+    }
+}
