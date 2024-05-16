@@ -51,4 +51,12 @@ api.on('contact-create-res', (_, { success, message }) => {
 
 	api.success(message);
 	form.reset();
+
+	if (checkBox.checked === true) {
+		extra1.classList.remove('hidden');
+		extra2.classList.remove('hidden');
+	} else {
+		extra1.classList.add('hidden');
+		extra2.classList.add('hidden');
+	}
 });

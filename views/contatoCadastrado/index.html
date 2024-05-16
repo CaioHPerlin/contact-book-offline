@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com;"
+  />
   <title>Contatos Cadastrados</title>
   <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  >
   <link rel="stylesheet" href="main.css">
@@ -43,11 +47,11 @@
         </svg>
       </div>
       <select name="orgao" id="orgao">
-        <option value="0">Selecione o Órgao</option>
+        <option value="0">Filtrar por Órgão...</option>
       </select>
    
       <select name="cargo" id="cargo">
-        <option value="0">Selecione o Cargo</option>
+        <option value="0">filtrar por Cargo...</option>
       </select>
 
     </section>
@@ -75,7 +79,7 @@
             </div>
             <span>Delete</span>
           </button>
-          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" class="none">
             <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="top">
                 <path d="M15,4 C15.5522847,4 16,4.44771525 16,5 L16,6 L18.25,6 C18.6642136,6 19,6.33578644 19,6.75 C19,7.16421356 18.6642136,7.5 18.25,7.5 L5.75,7.5 C5.33578644,7.5 5,7.16421356 5,6.75 C5,6.33578644 5.33578644,6 5.75,6 L8,6 L8,5 C8,4.44771525 8.44771525,4 9,4 L15,4 Z M14,5.25 L10,5.25 C9.72385763,5.25 9.5,5.47385763 9.5,5.75 C9.5,5.99545989 9.67687516,6.19960837 9.91012437,6.24194433 L10,6.25 L14,6.25 C14.2761424,6.25 14.5,6.02614237 14.5,5.75 C14.5,5.50454011 14.3231248,5.30039163 14.0898756,5.25805567 L14,5.25 Z"></path>
             </symbol>

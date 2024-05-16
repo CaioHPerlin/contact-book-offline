@@ -78,6 +78,16 @@ class User {
 	static async delete(event, id) {
 		const dbInstance = await db.connect();
 		try {
+			const users = await dbInstance.all('SELECT * FROM user');
+			if (users.length == 1) {
+				return event.sender.send('user-delete-res', {
+					success: false,
+					message:
+						'Por favor, certifique-se de que sempre exista ao menos 1 (um) usuário administrador cadastrado no sistema. Caso ainda queira remover este usuário, por favor, cadastre outro primeiro.',
+					id: id,
+				});
+			}
+
 			const query = `DELETE FROM user WHERE id = ?`;
 
 			await dbInstance.run(query, [id]);

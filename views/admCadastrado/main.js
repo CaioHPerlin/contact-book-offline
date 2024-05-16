@@ -56,7 +56,7 @@ api.on('user-getall-res', (_, { success, data, message }) => {
 
 api.on('user-delete-res', (_, { success, message, id }) => {
 	if (!success) {
-		api.error(message);
+		return api.error(message);
 	}
 
 	// api.send('user-getall-req', searchBox.value);

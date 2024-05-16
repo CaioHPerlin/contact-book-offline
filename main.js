@@ -81,8 +81,10 @@ const setWindowDev = () => {
 		setWindowProd();
 	}
 
-	mainWindow.webContents.openDevTools();
-	mainWindow.loadFile(path.join(__dirname, 'views/admCadastrado/index.html'));
+	// mainWindow.webContents.openDevTools();
+	mainWindow.loadFile(
+		path.join(__dirname, 'views/contatoCadastrado/index.html')
+	);
 };
 
 const createWindow = () => {

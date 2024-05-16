@@ -29,11 +29,14 @@ const setup = async (db) => {
 				)`
 		);
 
-		const query = `INSERT OR IGNORE INTO user (id, name, password) VALUES (1, ?, ?)`;
-		await db.run(query, [
-			process.env.ADMIN_USERNAME,
-			process.env.ADMIN_PASSWORD,
-		]);
+		const users = await db.all('SELECT * FROM user');
+		if (users.length <= 0) {
+			const query = `INSERT OR IGNORE INTO user (name, password) VALUES (?, ?)`;
+			await db.run(query, [
+				process.env.ADMIN_USERNAME,
+				process.env.ADMIN_PASSWORD,
+			]);
+		}
 
 		//Setup Organization
 		await db.exec(
