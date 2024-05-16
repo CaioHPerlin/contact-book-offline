@@ -5,17 +5,9 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
-header{
-
-    box-shadow: 1px 1px 3px;
-    background-color:  #f4fab4;
-=======
 header {
-	min-height: 100vh;
 	box-shadow: 1px 1px 3px;
 	background-color: #f4fab4;
->>>>>>> 774450c (feat: implement contact register)
 }
 
 header h2 {
@@ -95,6 +87,10 @@ input {
 	padding: 10px;
 	background-color: #fff;
 	box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.35);
+}
+
+.none {
+	display: none;
 }
 
 .card p {
@@ -244,10 +240,6 @@ html {
 	&:after {
 		box-sizing: inherit;
 	}
-}
-
-.none {
-	display: none;
 }
 
 header {

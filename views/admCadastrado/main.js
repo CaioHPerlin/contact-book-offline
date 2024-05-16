@@ -1,16 +1,13 @@
-document.querySelector('.hamburger').addEventListener('click', function() {
-    var list = document.querySelector('.list');
-    if (list.classList.contains('hidden')) {
-        list.classList.remove('hidden');
-        list.classList.add('show');
-    } else {
-        list.classList.remove('show');
-        list.classList.add('hidden');
-    }
+document.querySelector('.hamburger').addEventListener('click', function () {
+	var list = document.querySelector('.list');
+	if (list.classList.contains('hidden')) {
+		list.classList.remove('hidden');
+		list.classList.add('show');
+	} else {
+		list.classList.remove('show');
+		list.classList.add('hidden');
+	}
 });
-
-
-
 
 api.send('user-getall-req'); //Load users on DOM load
 const container = document.querySelector('#user-list');
@@ -26,7 +23,7 @@ api.on('user-getall-res', (_, { success, data, message }) => {
 		return api.error(message);
 	}
 
-	if (!Array.isArray(data) && data.length === 0) {
+	if (!Array.isArray(data) || data.length === 0) {
 		return (container.innerHTML =
 			'<center class="p-3">0 resultados encontrados.</center>');
 	}
@@ -72,4 +69,3 @@ function fadeDelete(el, speed) {
 		el.parentNode.removeChild(el);
 	}, speed);
 }
-

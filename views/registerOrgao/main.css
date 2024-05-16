@@ -5,96 +5,97 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-header{
-  
-    box-shadow: 1px 1px 3px;
-    background-color:  #a0d2f3;
+header {
+	box-shadow: 1px 1px 3px;
+	background-color: #a0d2f3;
 }
 
-header h2{
-    margin-top: 5px;
-    padding: 10px 20px;
+header h2 {
+	margin-top: 5px;
+	padding: 10px 20px;
 }
-.list{
-    margin-top: 30px;
-}
-
-.list li{
-    list-style: none;
-    padding: 15px 0px;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    
-    align-items: center;
-    text-transform: capitalize;
-}
- i{
-    margin: 0;
-    padding: 5px;
- }
-
- .list li:hover{
-    background-color: #c7e4f8;
-    cursor: pointer;
- 
- }
-
-.topo{
-    padding: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 1px 4px 2px 1px rgba(0,0,0,0.35);
-    -webkit-box-shadow: 1px 4px 2px 1px rgba(0,0,0,0.35);
-    -moz-box-shadow: 1px 4px 2px 1px rgba(0,0,0,0.35);
+.list {
+	margin-top: 30px;
 }
 
-.topo section h1{
-    font-size: 34px;
-    color: #000;
+.list li {
+	list-style: none;
+	padding: 15px 0px;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+
+	align-items: center;
+	text-transform: capitalize;
+}
+i {
+	margin: 0;
+	padding: 5px;
 }
 
+.list li:hover {
+	background-color: #bee6cb;
+	cursor: pointer;
+}
+
+.topo {
+	padding: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 1px 4px 2px 1px rgba(0, 0, 0, 0.35);
+	-webkit-box-shadow: 1px 4px 2px 1px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 1px 4px 2px 1px rgba(0, 0, 0, 0.35);
+}
+
+.topo section h1 {
+	font-size: 34px;
+	color: #000;
+}
 
 header a {
-    text-decoration: none;
-    color: #000;
+	text-decoration: none;
+	color: #000;
 }
 
-.content{
-    margin: 10px;
-    padding: 10px;
+.content {
+	margin: 10px;
+	padding: 10px;
 }
 
+.btn {
+	display: flex;
+	justify-content: right;
+	padding: 10px 20px;
+}
 
+header {
+	height: 100%;
+	overflow-y: scroll;
+}
 
-  header{
-    height: 100%;
-    overflow-y: scroll;
- }
-
- .hamburger {
-    display: none;
-    font-size: 30px;
-    background: none;
-    border: none;
+.hamburger {
+	display: none;
+	font-size: 30px;
+	background: none;
+	border: none;
 }
 
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-    
-    .list {
-        display: none;
-        width: 100%;
-        text-align: left;
-    }
-    
-    .list.hidden {
-        display: none;
-    }
+	.hamburger {
+		display: block;
+	}
 
-    .list.show {
-        display: block;
-    }
+	.list {
+		display: none;
+		width: 100%;
+		text-align: left;
+	}
+
+	.list.hidden {
+		display: none;
+	}
+
+	.list.show {
+		display: block;
+	}
 }
