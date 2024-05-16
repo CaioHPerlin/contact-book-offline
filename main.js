@@ -5,6 +5,7 @@ const path = require('node:path');
 const db = require('./db');
 
 const User = require('./models/user');
+const Contact = require('./models/contact');
 
 let mainWindow, dbInstance;
 const ENV = process.env.ENV;
@@ -14,6 +15,8 @@ ipcMain.on('auth-req', User.authenticate);
 ipcMain.on('user-create-req', User.create);
 ipcMain.on('user-getall-req', User.getAll);
 ipcMain.on('user-delete-req', User.delete);
+
+ipcMain.on('contact-create-req', Contact.create);
 
 ipcMain.on('message', (_, options) =>
 	dialog.showMessageBoxSync(mainWindow, { ...options, buttons: ['OK'] })

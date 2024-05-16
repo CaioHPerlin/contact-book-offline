@@ -1,5 +1,6 @@
 const db = require('../db');
 
+// id, name, password
 class User {
 	static async authenticate(event, { name, password }) {
 		const dbInstance = await db.connect();

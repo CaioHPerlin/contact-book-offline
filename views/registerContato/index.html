@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+			http-equiv="Content-Security-Policy"
+			content="default-src 'self'; script-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com;"
+		/>
   <title>Cadastro de Contatos</title>
   <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  >
   <link rel="stylesheet" href="main.css">
@@ -60,7 +64,7 @@
               
                   <!-- Checkbox para ativar a visualização dos campos seguintes -->
                   <div class="col-12">
-                    <input type="checkbox" id="mostrarMaisInputs" onclick="toggleInputs()">
+                    <input type="checkbox" id="mostrarMaisInputs">
                     <label for="mostrarMaisInputs">Está representando alguém</label>
                   </div>
               
@@ -88,7 +92,7 @@
                   <label for="inputOrgao" class="form-label">Órgão</label>
                   <select class="form-select" aria-label="Selecione o Órgão" id="inputOrgao" required>
                       <option selected>Escolha um Órgão...</option>
-                      <option value="Nenhum">Nenhum</option>
+                      <option value="">Nenhum</option>
 
                     </select>
                 </div>

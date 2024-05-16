@@ -48,10 +48,14 @@ const setup = async (db) => {
 			`CREATE TABLE IF NOT EXISTS contact (
 					id INTEGER PRIMARY KEY AUTOINCREMENT,
 					name TEXT NOT NULL,
+					pronoun TEXT NOT NULL,
 					role TEXT NOT NULL,
 					phone TEXT NOT NULL,
-					email TEXT NOT NULL,
-					organizationId INTEGER REFERENCES organization(id)
+					email TEXT NOT NULL UNIQUE,
+					organizationId INTEGER REFERENCES organization(id),
+					isRepresenting BOOLEAN NOT NULL,
+					representedName TEXT,
+					representedRole TEXT
 				)`
 		);
 
