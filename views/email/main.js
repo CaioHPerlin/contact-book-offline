@@ -8,4 +8,3 @@ document.querySelector('.hamburger').addEventListener('click', function() {
         list.classList.add('hidden');
     }
 });
-

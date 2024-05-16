@@ -59,15 +59,9 @@ header a {
     text-decoration: none;
     color: #000;
 }
- header{
-    height: 100vh;
-    overflow-y: scroll;
- }
 
 
- 
-
- header{
+header{
     height: 100%;
     overflow-y: scroll;
  }
