@@ -1,3 +1,17 @@
+document.querySelector('.hamburger').addEventListener('click', function() {
+    var list = document.querySelector('.list');
+    if (list.classList.contains('hidden')) {
+        list.classList.remove('hidden');
+        list.classList.add('show');
+    } else {
+        list.classList.remove('show');
+        list.classList.add('hidden');
+    }
+});
+
+
+
+
 api.send('user-getall-req'); //Load users on DOM load
 const container = document.querySelector('#user-list');
 const searchBox = document.getElementsByTagName('input')[0];
@@ -59,13 +73,3 @@ function fadeDelete(el, speed) {
 	}, speed);
 }
 
-document.querySelector('.hamburger').addEventListener('click', function () {
-	var list = document.querySelector('.list');
-	if (list.classList.contains('hidden')) {
-		list.classList.remove('hidden');
-		list.classList.add('show');
-	} else {
-		list.classList.remove('show');
-		list.classList.add('hidden');
-	}
-});
