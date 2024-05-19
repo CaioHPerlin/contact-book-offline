@@ -106,7 +106,14 @@ header a {
 	color: #000;
 }
 
+
 .button {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    text-align: center;
 	margin-top: 10px;
 	--background: #fb0c0c;
 	--background-hover: #fb0c0c;
@@ -122,7 +129,7 @@ header a {
 	line-height: 24px;
 	font-family: inherit;
 	font-weight: 600;
-	font-size: 15px;
+	font-size: 18px;
 	overflow: hidden;
 	color: var(--text);
 	background: var(--b, var(--background));
