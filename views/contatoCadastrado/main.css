@@ -5,17 +5,10 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
 header{
 
     box-shadow: 1px 1px 3px;
     background-color:  #f4fab4;
-=======
-header {
-	min-height: 100vh;
-	box-shadow: 1px 1px 3px;
-	background-color: #f4fab4;
->>>>>>> 774450c (feat: implement contact register)
 }
 
 header h2 {
@@ -135,15 +128,10 @@ header a {
 	background: var(--b, var(--background));
 	transition: transform 0.3s, background 0.4s;
 	transform: scale(var(--scale, 1)) translateZ(0);
-	-webkit-appearance: none;
+	
 	-webkit-tap-highlight-color: transparent;
-	-webkit-mask-image: -webkit-radial-gradient(white, black);
-	&:active {
-		--scale: 0.95;
-	}
-	&:hover {
-		--b: var(--background-hover);
-	}
+	
+	
 	.icon,
 	span {
 		display: inline-block;
@@ -183,55 +171,12 @@ header a {
 	}
 }
 
-@keyframes trash-bottom {
-	25%,
-	32% {
-		transform: translate(32px, 19px) scale(1) translateZ(0);
-	}
-	70%,
-	80% {
-		transform: translate(32px, 0) scale(0.254) translateZ(0);
-	}
-	100% {
-		transform: scale(0.254) translateZ(0);
-	}
+.button:hover{
+	background: #fc4040;
+	
 }
 
-@keyframes trash-top {
-	25%,
-	32% {
-		transform: translate(38px, 4px) scale(1) rotate(-20deg) translateZ(0);
-	}
-	70%,
-	80% {
-		transform: translate(32px, 0) scale(0.254) translateZ(0);
-	}
-	100% {
-		transform: scale(0.254) translateZ(0);
-	}
-}
 
-@keyframes text {
-	25% {
-		transform: translate(-4px, -4px) rotate(-20deg) translateZ(0);
-	}
-	70% {
-		opacity: 1;
-		transform: translate(-12px, 48px) rotate(-80deg) scale(0.2)
-			translateZ(0);
-	}
-	71% {
-		opacity: 0;
-	}
-	72%,
-	90% {
-		opacity: 0;
-		transform: translateZ(0);
-	}
-	100% {
-		opacity: 1;
-	}
-}
 
 html {
 	box-sizing: border-box;
@@ -279,5 +224,9 @@ header {
 
 	.list.show {
 		display: block;
+	}
+	.search-box {
+	
+		width: 200px;
 	}
 }
