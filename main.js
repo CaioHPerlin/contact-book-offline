@@ -18,6 +18,8 @@ ipcMain.on('user-getall-req', User.getAll);
 ipcMain.on('user-delete-req', User.delete);
 
 ipcMain.on('contact-create-req', Contact.create);
+ipcMain.on('contact-getall-req', Contact.getAll);
+ipcMain.on('contact-delete-req', Contact.delete);
 
 ipcMain.on('organization-create-req', Organization.create);
 ipcMain.on('organization-getall-req', Organization.getAll);
@@ -87,7 +89,9 @@ const setWindowDev = () => {
 	}
 
 	// mainWindow.webContents.openDevTools();
-	mainWindow.loadFile(path.join(__dirname, 'views/registerOrgao/index.html'));
+	mainWindow.loadFile(
+		path.join(__dirname, 'views/contatoCadastrado/index.html')
+	);
 };
 
 const createWindow = () => {

@@ -24,26 +24,59 @@ class Contact {
 		}
 	}
 
-	static async getAll(event, name) {
+	static async getAll(event, { name, organizationId } = {}) {
 		const dbInstance = await db.connect();
 		try {
-			let query, params;
+			let query = `SELECT contact.*, organization.name AS organizationName
+						 FROM contact
+						 LEFT JOIN organization ON contact.organizationId = organization.id`;
+
+			let params = [];
+
 			if (name) {
-				query = 'SELECT * FROM contact WHERE name LIKE ?';
+				query += 'WHERE name LIKE ?';
 				params = [`%${name}%`];
-			} else {
-				query = 'SELECT * FROM user';
-				params = [];
+			}
+
+			if (organizationId) {
+				query += 'AND organizationId = ?';
+				params = [...params, organizationId];
 			}
 
 			const rows = await dbInstance.all(query, params);
-			event.sender.send('user-getall-res', { success: true, data: rows });
+			event.sender.send('contact-getall-res', {
+				success: true,
+				data: rows,
+			});
 		} catch (err) {
-			console.error('Error when getting all users:', err);
-			event.sender.send('user-getall-res', {
+			console.error('Error when getting all contacts:', err);
+			event.sender.send('contact-getall-res', {
 				success: false,
 				message:
 					'Erro ao acessar o banco de dados. Por favor, reinicie a aplicação.',
+			});
+		} finally {
+			await db.close(dbInstance);
+		}
+	}
+
+	static async delete(event, id) {
+		const dbInstance = await db.connect();
+		try {
+			const query = `DELETE FROM contact WHERE id = ?`;
+
+			await dbInstance.run(query, [id]);
+			event.sender.send('contact-delete-res', {
+				success: true,
+				id: id,
+			});
+		} catch (err) {
+			console.error('Error when deleting user:', err);
+			event.sender.send('contact-delete-res', {
+				success: false,
+				message:
+					'Erro ao remover contato do banco de dados, por favor, tente buscar novamente.',
+				id: id,
 			});
 		} finally {
 			await db.close(dbInstance);
