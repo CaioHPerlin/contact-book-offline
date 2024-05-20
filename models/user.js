@@ -11,7 +11,7 @@ class User {
 			if (!row || row.password != password) {
 				return event.sender.send('auth-res', {
 					success: false,
-					message: 'Login ou senha inválidos',
+					message: 'Login ou senha inválidos.',
 				});
 			}
 
@@ -21,7 +21,7 @@ class User {
 			event.sender.send('auth-res', {
 				success: false,
 				message:
-					'Erro interno no banco de dados, por favor, reinicie a aplicação',
+					'Erro interno no banco de dados, por favor, reinicie a aplicação.',
 			});
 		} finally {
 			await db.close(dbInstance);
@@ -42,7 +42,7 @@ class User {
 			console.error('Error when creating user:', err);
 			event.sender.send('user-create-res', {
 				success: false,
-				message: `Já existe um usuário administrador chamado ${name}, por favor, escolha um nome diferente`,
+				message: `Já existe um usuário administrador chamado ${name}, por favor, escolha um nome diferente.`,
 			});
 		} finally {
 			await db.close(dbInstance);
@@ -68,7 +68,7 @@ class User {
 			event.sender.send('user-getall-res', {
 				success: false,
 				message:
-					'Erro ao acessar o banco de dados. Por favor, reinicie a aplicação',
+					'Erro ao acessar o banco de dados. Por favor, reinicie a aplicação.',
 			});
 		} finally {
 			await db.close(dbInstance);
@@ -100,7 +100,7 @@ class User {
 			event.sender.send('user-delete-res', {
 				success: false,
 				message:
-					'Erro ao remover usuário do banco de dados, por favor, tente pesquisar por usuários novamente',
+					'Erro ao remover usuário do banco de dados, por favor, tente pesquisar por usuários novamente.',
 				id: id,
 			});
 		} finally {

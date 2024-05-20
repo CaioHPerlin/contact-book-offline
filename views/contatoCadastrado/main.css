@@ -5,10 +5,9 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-header{
-
-    box-shadow: 1px 1px 3px;
-    background-color:  #f4fab4;
+header {
+	box-shadow: 1px 1px 3px;
+	background-color: #f4fab4;
 }
 
 header h2 {
@@ -90,13 +89,17 @@ input {
 	box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.35);
 }
 
+.none {
+	display: none;
+}
+
 .card p {
 	font-size: 16px;
 	font-weight: 700;
 }
 
-.cardFlex{
-    display: flex;
+.cardFlex {
+	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
@@ -112,14 +115,13 @@ header a {
 	color: #000;
 }
 
-
 .button {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    text-align: center;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	text-align: center;
 	margin-top: 10px;
 	--background: #fb0c0c;
 	--background-hover: #fb0c0c;
@@ -141,10 +143,9 @@ header a {
 	background: var(--b, var(--background));
 	transition: transform 0.3s, background 0.4s;
 	transform: scale(var(--scale, 1)) translateZ(0);
-	
+
 	-webkit-tap-highlight-color: transparent;
-	
-	
+
 	.icon,
 	span {
 		display: inline-block;
@@ -184,12 +185,9 @@ header a {
 	}
 }
 
-.button:hover{
+.button:hover {
 	background: #fc4040;
-	
 }
-
-
 
 html {
 	box-sizing: border-box;
@@ -202,10 +200,6 @@ html {
 	&:after {
 		box-sizing: inherit;
 	}
-}
-
-.none {
-	display: none;
 }
 
 header {
@@ -239,7 +233,6 @@ header {
 		display: block;
 	}
 	.search-box {
-	
 		width: 200px;
 	}
 }

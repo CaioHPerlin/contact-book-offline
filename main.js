@@ -6,6 +6,7 @@ const db = require('./db');
 
 const User = require('./models/user');
 const Contact = require('./models/contact');
+const Organization = require('./models/organization');
 
 let mainWindow, dbInstance;
 const ENV = process.env.ENV;
@@ -17,6 +18,12 @@ ipcMain.on('user-getall-req', User.getAll);
 ipcMain.on('user-delete-req', User.delete);
 
 ipcMain.on('contact-create-req', Contact.create);
+ipcMain.on('contact-getall-req', Contact.getAll);
+ipcMain.on('contact-delete-req', Contact.delete);
+
+ipcMain.on('organization-create-req', Organization.create);
+ipcMain.on('organization-getall-req', Organization.getAll);
+ipcMain.on('organization-delete-req', Organization.delete);
 
 ipcMain.on('message', (_, options) =>
 	dialog.showMessageBoxSync(mainWindow, { ...options, buttons: ['OK'] })

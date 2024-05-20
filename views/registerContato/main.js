@@ -1,6 +1,7 @@
-var checkBox = document.getElementById('mostrarMaisInputs');
-var extra1 = document.getElementById('campoExtra1');
-var extra2 = document.getElementById('campoExtra2');
+api.send('organization-getall-req'); //Load organizations on page load
+const checkBox = document.getElementById('mostrarMaisInputs');
+const extra1 = document.getElementById('campoExtra1');
+const extra2 = document.getElementById('campoExtra2');
 
 checkBox.addEventListener('click', () => {
 	// Verifica se o checkbox está marcado
@@ -59,4 +60,15 @@ api.on('contact-create-res', (_, { success, message }) => {
 		extra1.classList.add('hidden');
 		extra2.classList.add('hidden');
 	}
+});
+
+const selectInput = document.querySelector('#inputOrgao');
+api.on('organization-getall-res', (_, { success, data }) => {
+	if (!success) {
+		return api.error(message);
+	}
+
+	data.map((org) => {
+		selectInput.innerHTML += `<option value="${org.id}">${org.name}</option>`;
+	});
 });
