@@ -95,6 +95,12 @@ input {
 	font-weight: 700;
 }
 
+.cardFlex{
+    display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
 .btn {
 	display: flex;
 	justify-content: center;
