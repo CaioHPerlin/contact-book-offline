@@ -34,12 +34,12 @@ class Contact {
 			let params = [];
 
 			if (name) {
-				query += 'WHERE name LIKE ?';
+				query += ' WHERE contact.name LIKE ?';
 				params = [`%${name}%`];
 			}
 
 			if (organizationId) {
-				query += 'AND organizationId = ?';
+				query += 'AND contact.organizationId = ?';
 				params = [...params, organizationId];
 			}
 

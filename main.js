@@ -19,7 +19,19 @@ ipcMain.on('user-delete-req', User.delete);
 
 ipcMain.on('contact-create-req', Contact.create);
 ipcMain.on('contact-getall-req', Contact.getAll);
-ipcMain.on('contact-delete-req', Contact.delete);
+ipcMain.on('contact-delete-req', (event, id) => {
+	const response = dialog.showMessageBoxSync(mainWindow, {
+		type: 'question',
+		buttons: ['Sim', 'Não'],
+		defaultId: 1,
+		title: 'Confirmar exclusão',
+		message: 'Tem certeza de que deseja deletar este contato?',
+	});
+
+	if (response === 0) {
+		Contact.delete(event, id);
+	}
+});
 
 ipcMain.on('organization-create-req', Organization.create);
 ipcMain.on('organization-getall-req', Organization.getAll);

@@ -80,28 +80,36 @@ input {
 }
 
 .card {
-	width: 300px;
+	overflow: visible;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	max-width: 300px;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
 
-	border-radius: 8px;
+.card p {
 	margin: 10px 0;
-	padding: 10px;
-	background-color: #fff;
-	box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.35);
+	font-family: 'Arial', sans-serif;
+	color: #333;
 }
 
 .none {
 	display: none;
 }
 
-.card p {
-	font-size: 16px;
-	font-weight: 700;
+.cardFlex {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	padding: 20px;
 }
 
-.cardFlex {
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+.iconSearch svg {
+	position: absolute;
+	top: 25%;
+	right: 0;
 }
 
 .btn {
@@ -235,4 +243,33 @@ header {
 	.search-box {
 		width: 200px;
 	}
+}
+
+.card {
+	overflow: visible;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	max-width: 300px;
+	transition: transform 0.2s, box-shadow 0.2s;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between; /* Ensures the button is at the bottom */
+}
+
+.card-content {
+	flex-grow: 1;
+}
+
+.card p {
+	margin: 10px 0;
+	font-family: 'Arial', sans-serif;
+	color: #333;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 }
