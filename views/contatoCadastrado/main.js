@@ -1,4 +1,6 @@
 api.send('contact-getall-req'); // Load contacts on page load
+api.send('organization-getall-req'); //Load organizations on page load
+api.send('contact-role-getall-req'); //Load roles on page load
 
 document.querySelector('.hamburger').addEventListener('click', function () {
 	var list = document.querySelector('.list');
@@ -71,6 +73,28 @@ api.on('contact-getall-res', (_, { success, data, message }) => {
 	});
 });
 
+selectInput = document.getElementById('orgao');
+api.on('organization-getall-res', (_, { success, data, message }) => {
+	if (!success) {
+		return api.error(message);
+	}
+
+	data.map((org) => {
+		selectInput.innerHTML += `<option value="${org.id}">${org.name}</option>`;
+	});
+});
+
+selectRoleInput = document.getElementById('cargo');
+api.on('contact-role-getall-res', (_, { success, data, message }) => {
+	if (!success) {
+		return api.error(message);
+	}
+
+	data.map((row) => {
+		selectRoleInput.innerHTML += `<option value="${row.role}">${row.role}</option>`;
+	});
+});
+
 api.on('contact-delete-res', (_, { success, message, id }) => {
 	if (!success) {
 		return api.error(message);
@@ -95,6 +119,8 @@ const searchBox = document.querySelector('#search');
 searchButton.addEventListener('click', () => {
 	const data = {
 		name: searchBox.value,
+		organizationId: selectInput.value,
+		role: selectRoleInput.value,
 	};
 
 	api.send('contact-getall-req', data);
