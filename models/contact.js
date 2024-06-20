@@ -24,23 +24,24 @@ class Contact {
 		}
 	}
 
-	static async getAll(event, { name, organizationId } = {}) {
+	static async getAll(event, { name, organizationId, role } = {}) {
 		const dbInstance = await db.connect();
 		try {
 			let query = `SELECT contact.*, organization.name AS organizationName
 						 FROM contact
-						 LEFT JOIN organization ON contact.organizationId = organization.id`;
+						 LEFT JOIN organization ON contact.organizationId = organization.id
+						 WHERE contact.name LIKE ?`;
 
-			let params = [];
+			let params = [`%${name || ''}%`];
 
-			if (name) {
-				query += ' WHERE contact.name LIKE ?';
-				params = [`%${name}%`];
+			if (organizationId && organizationId != 0) {
+				query += ' AND contact.organizationId = ?';
+				params = [...params, organizationId];
 			}
 
-			if (organizationId) {
-				query += 'AND contact.organizationId = ?';
-				params = [...params, organizationId];
+			if (role && role != 0) {
+				query += ' And contact.role = ?';
+				params = [...params, role];
 			}
 
 			const rows = await dbInstance.all(query, params);
@@ -51,6 +52,30 @@ class Contact {
 		} catch (err) {
 			console.error('Error when getting all contacts:', err);
 			event.sender.send('contact-getall-res', {
+				success: false,
+				message:
+					'Erro ao acessar o banco de dados. Por favor, reinicie a aplicação.',
+			});
+		} finally {
+			await db.close(dbInstance);
+		}
+	}
+
+	static async getRoles(event) {
+		const dbInstance = await db.connect();
+		try {
+			let query = `SELECT role
+						 FROM contact`;
+
+			const rows = await dbInstance.all(query);
+
+			event.sender.send('contact-role-getall-res', {
+				success: true,
+				data: rows,
+			});
+		} catch (err) {
+			console.error('Error when getting all roles:', err);
+			event.sender.send('contact-role-getall-res', {
 				success: false,
 				message:
 					'Erro ao acessar o banco de dados. Por favor, reinicie a aplicação.',

@@ -19,6 +19,7 @@ ipcMain.on('user-delete-req', User.delete);
 
 ipcMain.on('contact-create-req', Contact.create);
 ipcMain.on('contact-getall-req', Contact.getAll);
+ipcMain.on('contact-role-getall-req', Contact.getRoles);
 ipcMain.on('contact-delete-req', (event, id) => {
 	const response = dialog.showMessageBoxSync(mainWindow, {
 		type: 'question',
