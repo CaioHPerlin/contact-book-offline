@@ -47,6 +47,12 @@
         </nav>
         <main class="container mt-4">
             <ul id="org-list" class="list-group mt-3 lista">
+              <li id="${org.id}" class="list-group-item d-flex align-items-center">
+                <span class="col">Policia federal</span>
+                <div class="col text-end">
+                  <button data-id="${org.id}" class="delete-btn btn btn-danger">Excluir Órgão</button>
+                </div>
+              </li>
             </ul>
         </main>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js" ></script>
